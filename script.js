@@ -1106,7 +1106,7 @@ document.addEventListener('DOMContentLoaded', function() {
             `\nPlease send me a detailed quote and confirm availability.\n\n` +
             `Thank you!`;
 
-        const mailtoUrl = `mailto:info@damtours.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        const mailtoUrl = `mailto:damvithana1981@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         window.location.href = mailtoUrl;
     });
 });
@@ -1223,7 +1223,7 @@ document.addEventListener('DOMContentLoaded', function() {
             `Please confirm availability and provide payment details.\n\n` +
             `Thank you!`;
 
-        const mailtoUrl = `mailto:info@damtours.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        const mailtoUrl = `mailto:damvithana1981@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         window.location.href = mailtoUrl;
     });
 });
