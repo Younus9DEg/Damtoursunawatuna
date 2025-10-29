@@ -14,20 +14,20 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="product">
-  <meta property="og:url" content="https://damtoursunawatuna.com/bike.html">
+  <meta property="og:url" content="https://damtoursunawatuna.com/bike">
   <meta property="og:title" content="Bike Rental Galle | Scooter Rental from $7/day | DamBikes">
   <meta property="og:description" content="Best bike rental in Galle! Honda Dio, Honda Navi scooters from $7/day. Free helmets, unlimited km. Premium service.">
   <meta property="og:image" content="https://damtoursunawatuna.com/honda-navi-2018-sparky-orange-1551184890881.avif">
   
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://damtoursunawatuna.com/bike.html">
+  <meta property="twitter:url" content="https://damtoursunawatuna.com/bike">
   <meta property="twitter:title" content="Bike Rental Galle | Scooter Rental from $7/day">
   <meta property="twitter:description" content="Best bike rental in Galle! Honda scooters from $7/day. Free helmets, unlimited km.">
   <meta property="twitter:image" content="https://damtoursunawatuna.com/honda-navi-2018-sparky-orange-1551184890881.avif">
   
   <!-- Canonical URL -->
-  <link rel="canonical" href="https://damtoursunawatuna.com/bike.html">
+  <link rel="canonical" href="https://damtoursunawatuna.com/bike">
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
@@ -42,7 +42,7 @@
     "@graph": [
       {
         "@type": "Product",
-        "@id": "https://damtoursunawatuna.com/bike.html#honda-dio",
+        "@id": "https://damtoursunawatuna.com/bike#honda-dio",
         "name": "Honda Dio 110cc Scooter Rental Galle",
         "description": "Rent Honda Dio 110cc scooter in Galle. Perfect for beach hopping and city touring. Includes 2 helmets, unlimited km.",
         "brand": {
@@ -52,7 +52,7 @@
         "image": "https://lk-live-21.slatic.net/kf/S6fc8d74866874ec6931768b202265aafa.jpg",
         "offers": {
           "@type": "Offer",
-          "url": "https://damtoursunawatuna.com/bike.html",
+          "url": "https://damtoursunawatuna.com/bike",
           "priceCurrency": "USD",
           "price": "7",
           "priceValidUntil": "2025-12-31",
@@ -101,7 +101,7 @@
             "@type": "ListItem",
             "position": 2,
             "name": "Bike Rental Galle",
-            "item": "https://damtoursunawatuna.com/bike.html"
+            "item": "https://damtoursunawatuna.com/bike"
           }
         ]
       }
@@ -113,7 +113,7 @@
   <!-- Top Bar / Navbar (minimal) -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white" id="navbar">
     <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="index.html#home">
+      <a class="navbar-brand d-flex align-items-center" href="/#home">
         <img src="WhatsApp Image 2025-10-24 at 08.14.05.jpeg" alt="Dam Tours Unawatuna - Bike Rental Galle Logo" class="navbar-logo me-2" />
         <div class="brand-wrapper">
           <span class="brand-text">Dam Tours</span>
@@ -125,10 +125,10 @@
       </button>
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav main-nav">
-          <li class="nav-item"><a class="nav-link" href="index.html#home">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="index.html#tours">Tours</a></li>
-          <li class="nav-item"><a class="nav-link active" href="bike.html">Bikes</a></li>
-          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#tours">Tours</a></li>
+          <li class="nav-item"><a class="nav-link active" href="bike">Bikes</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#contact">Contact</a></li>
         </ul>
         <a href="https://wa.me/940762208819?text=Hi%20Dam%20Tours%2C%20I%20want%20to%20rent%20a%20bike." class="btn btn-book-now ms-lg-3" target="_blank" rel="noopener">Book on WhatsApp</a>
       </div>
@@ -344,8 +344,8 @@
           <p class="mb-md-0">© 2025 Dambikes by Dam Tours</p>
         </div>
         <div class="col-md-6 text-center text-md-end">
-          <a href="index.html#contact" class="me-3">Contact</a>
-          <a href="index.html#tours">Tours</a>
+          <a href="/#contact" class="me-3">Contact</a>
+          <a href="/#tours">Tours</a>
         </div>
       </div>
     </div>
@@ -386,5 +386,16 @@
       <span>Call</span>
     </a>
   </div>
+  <script>
+    // Redirect .html to extensionless URLs, handling index.html correctly
+    const path = window.location.pathname;
+    if (path.endsWith('/index.html')) {
+      const newPath = path.slice(0, -10); // Removes 'index.html'
+      window.location.href = newPath || '/'; // Redirect to root if it was the only thing
+    } else if (path.endsWith('.html')) {
+      const newPath = path.slice(0, -5); // Removes '.html'
+      window.location.href = newPath;
+    }
+  </script>
 </body>
 </html>

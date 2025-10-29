@@ -1,21 +1,21 @@
 // Loading Screen Handler
-window.addEventListener('load', function() {
+document.addEventListener('DOMContentLoaded', function() {
     const loadingScreen = document.getElementById('loading-screen');
     if (loadingScreen) {
         // Add a small delay for visual effect
         setTimeout(() => {
             loadingScreen.classList.add('loaded');
-        }, 1000);
+        }, 500);
     }
 });
 
-// Fallback - remove loading screen after 3 seconds regardless
+// Fallback - remove loading screen after 2 seconds regardless
 setTimeout(() => {
     const loadingScreen = document.getElementById('loading-screen');
     if (loadingScreen) {
         loadingScreen.classList.add('loaded');
     }
-}, 3000);
+}, 2000);
 
 // ===== HERO BACKGROUND SLIDESHOW =====
 document.addEventListener('DOMContentLoaded', function() {
