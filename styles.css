@@ -781,6 +781,31 @@ body {
     top: 0 !important;
 }
 
+/* Google Translate Mobile Fixes */
+@media (max-width: 768px) {
+    .goog-te-banner-frame {
+        display: block !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        z-index: 10001 !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    #goog-gt-tt {
+        min-width: 300px !important;
+    }
+
+    .goog-close-link {
+        display: inline-block !important;
+        padding: 8px 12px !important;
+        background: #fff;
+        border-radius: 50%;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+}
+
 /* Theme Toggle Button */
 .theme-toggle-btn {
     position: relative;
