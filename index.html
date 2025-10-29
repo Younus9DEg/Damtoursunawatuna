@@ -71,6 +71,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Preload first hero image for faster LCP -->
+    <link rel="preload" href="Teadrop-Hotels-Nine-Skies-Visit-to-Nine-Arches-Bridge-1200x630-1.jpg" as="image">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
     
@@ -365,7 +366,7 @@
     <!-- Loading Screen -->
     <div id="loading-screen" role="status" aria-live="polite">
         <div class="loader-gif">
-            <img src="output-onlinegiftools.gif" alt="Loading animation" class="loading-gif" />
+            <img src="output-onlinegiftools.gif" alt="Loading animation" class="loading-gif" loading="eager" decoding="async" />
         </div>
         <div class="loading-text-wrapper">
             <p class="loading-text">
@@ -385,7 +386,7 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white" id="navbar">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#home">
-                <img src="WhatsApp Image 2025-10-24 at 08.14.05.jpeg" alt="Dam Tours Unawatuna Logo - Best Tour Operator Galle" class="navbar-logo me-2">
+                <img src="WhatsApp Image 2025-10-24 at 08.14.05.jpeg" alt="Dam Tours Unawatuna Logo - Best Tour Operator Galle" class="navbar-logo me-2" loading="lazy" decoding="async">
                 <div class="brand-wrapper">
                     <span class="brand-text">Dam Tours</span>
                     <span class="brand-location">Unawatuna</span>
@@ -490,7 +491,7 @@
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="tour-card">
                         <div class="tour-image-wrapper">
-                            <img src="https://ichef.bbci.co.uk/images/ic/480xn/p0b7n6d7.jpg.webp" alt="Sigiriya Rock Fortress Tour from Galle - Dam Tours Unawatuna" loading="lazy" sizes="(max-width: 768px) 100vw, 33vw">
+                            <img src="https://ichef.bbci.co.uk/images/ic/480xn/p0b7n6d7.jpg.webp" alt="Sigiriya Rock Fortress Tour from Galle - Dam Tours Unawatuna" loading="lazy" decoding="async" sizes="(max-width: 768px) 100vw, 33vw">
                             <div class="tour-badges">
                    
                                 <span class="tour-duration"> Day</span>
@@ -529,7 +530,7 @@
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="tour-card">
                         <div class="tour-image-wrapper">
-                            <img src="Teadrop-Hotels-Nine-Skies-Visit-to-Nine-Arches-Bridge-1200x630-1.jpg" alt="Ella Nine Arch Bridge Tour from Galle - Dam Tours" loading="lazy" sizes="(max-width: 768px) 100vw, 33vw">
+                            <img src="Teadrop-Hotels-Nine-Skies-Visit-to-Nine-Arches-Bridge-1200x630-1.jpg" alt="Ella Nine Arch Bridge Tour from Galle - Dam Tours" loading="lazy" decoding="async" sizes="(max-width: 768px) 100vw, 33vw">
                             <div class="tour-badges">
                                    
                                 <span class="tour-duration"> Day</span>
@@ -568,7 +569,7 @@
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="tour-card">
                         <div class="tour-image-wrapper">
-                            <img src="https://i.insider.com/58bedaa4bd709f22008b45f6?width=1200&format=jpeg" alt="Yala Safari Tour from Galle - Dam Tours Unawatuna Wildlife Tours" loading="lazy" sizes="(max-width: 768px) 100vw, 33vw">
+                            <img src="https://i.insider.com/58bedaa4bd709f22008b45f6?width=1200&format=jpeg" alt="Yala Safari Tour from Galle - Dam Tours Unawatuna Wildlife Tours" loading="lazy" decoding="async" sizes="(max-width: 768px) 100vw, 33vw">
                             <div class="tour-badges">
                                 
                                 <span class="tour-duration"> Day</span>
@@ -607,7 +608,7 @@
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="tour-card">
                         <div class="tour-image-wrapper">
-                            <img src="https://andrewsfabuloustravelblog.me/wp-content/uploads/2025/02/kandy2.jpg" alt="Kandy Temple Tour from Galle - Dam Tours Cultural Tours" loading="lazy" sizes="(max-width: 768px) 100vw, 33vw">
+                            <img src="https://andrewsfabuloustravelblog.me/wp-content/uploads/2025/02/kandy2.jpg" alt="Kandy Temple Tour from Galle - Dam Tours Cultural Tours" loading="lazy" decoding="async" sizes="(max-width: 768px) 100vw, 33vw">
                             <div class="tour-badges">
                              
                                 <span class="tour-duration"> Day</span>
@@ -646,7 +647,7 @@
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="tour-card">
                         <div class="tour-image-wrapper">
-                            <img src="https://cdn.forevervacation.com/uploads/tour/images/tour_341_7235.jpg?tr=w-560,h-638" alt="Nuwara Eliya Tea Plantation Tour from Galle - Dam Tours" loading="lazy" sizes="(max-width: 768px) 100vw, 33vw">
+                            <img src="https://cdn.forevervacation.com/uploads/tour/images/tour_341_7235.jpg?tr=w-560,h-638" alt="Nuwara Eliya Tea Plantation Tour from Galle - Dam Tours" loading="lazy" decoding="async" sizes="(max-width: 768px) 100vw, 33vw">
                             <div class="tour-badges">
                                 
                                
@@ -1333,10 +1334,10 @@
         
 
     <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
     
     <!-- AOS - Animate On Scroll -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     
     <!-- Initialize AOS -->
     <script>
@@ -1429,7 +1430,7 @@
         (function() {
             var s = document.createElement('script');
             s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-            s.async = true;
+            s.defer = true;
             document.head.appendChild(s);
         })();
 
@@ -1439,7 +1440,7 @@
             window.__elf_loaded = true;
             var s = document.createElement('script');
             s.src = 'https://elfsightcdn.com/platform.js';
-            s.async = true;
+            s.defer = true;
             document.head.appendChild(s);
         }
         if ('requestIdleCallback' in window) {
@@ -1508,23 +1509,25 @@
             }
             
             function openChatbot() {
-                if (window.chatbase) {
+                // If chatbase is ready, open it.
+                if (window.chatbase && window.chatbase.q) {
                     window.chatbase('open');
-                } else {
-                    setTimeout(function() {
-                        const chatbaseButton = document.querySelector('#chatbase-bubble-button');
-                        if (chatbaseButton) {
-                            chatbaseButton.click();
-                        } else {
-                            const chatbaseWindow = document.querySelector('#chatbase-bubble-window');
-                            if (chatbaseWindow) {
-                                chatbaseWindow.style.display = 'block';
-                                chatbaseWindow.style.visibility = 'visible';
-                                chatbaseWindow.style.opacity = '1';
-                            }
-                        }
-                    }, 100);
+                    return;
                 }
+                // Otherwise, queue the open command and start polling.
+                window.chatbase = window.chatbase || function() {
+                    (window.chatbase.q = window.chatbase.q || []).push(arguments)
+                };
+                window.chatbase('open');
+
+                // Poll for the chatbase object to be ready
+                const interval = setInterval(function() {
+                    if (window.chatbase && window.chatbase.q) {
+                        clearInterval(interval);
+                        // The embed script replaces the queue with the actual function.
+                        // We can now safely call the open command.
+                    }
+                }, 500);
             }
             
             // Close chatbot when clicking outside
