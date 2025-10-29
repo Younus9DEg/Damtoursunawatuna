@@ -219,7 +219,7 @@
           },
           "offers": {
             "@type": "Offer",
-            "url": "https://damtoursunawatuna.com/bike.html",
+            "url": "https://damtoursunawatuna.com/bike",
             "priceCurrency": "USD",
             "price": "7",
             "availability": "https://schema.org/InStock",
@@ -261,7 +261,7 @@
               "@type": "ListItem",
               "position": 3,
               "name": "Bike Rental",
-              "item": "https://damtoursunawatuna.com/bike.html"
+              "item": "https://damtoursunawatuna.com/bike"
             }
           ]
         }
@@ -404,7 +404,7 @@
                         <a class="nav-link" href="#tours">Tours</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="bike.html">Bikes</a>
+                        <a class="nav-link" href="bike">Bikes</a>
                     </li>
                     
                     
@@ -1229,7 +1229,7 @@
                         <ul class="footer-menu">
                             <li><a href="#home">Home</a></li>
                             <li><a href="#tours">Our Tours</a></li>
-                            <li><a href="bike.html">Bike Rent</a></li>
+                            <li><a href="bike">Bike Rent</a></li>
                             <li><a href="#gallery">Gallery</a></li>
                             <li><a href="#reviews">Reviews</a></li>
                             <li><a href="#contact">Contact</a></li>
@@ -1380,7 +1380,7 @@
             <i class="fas fa-compass"></i>
             <span>Tours</span>
         </a>
-        <a href="bike.html" class="mobile-nav-item" aria-label="Bike Rent">
+        <a href="bike" class="mobile-nav-item" aria-label="Bike Rent">
             <i class="fas fa-motorcycle"></i>
             <span>Bike Rent</span>
         </a>
@@ -1405,7 +1405,7 @@
             <i class="fas fa-robot"></i>
             <span>AI Chat</span>
         </button>
-        <a class="msa-btn msa-bikes" href="bike.html">
+        <a class="msa-btn msa-bikes" href="bike">
             <i class="fas fa-motorcycle"></i>
             <span>Bikes</span>
         </a>
@@ -1567,6 +1567,17 @@
                 }
             }, true);
         });
+    </script>
+    <script>
+      // Redirect .html to extensionless URLs, handling index.html correctly
+      const path = window.location.pathname;
+      if (path.endsWith('/index.html')) {
+        const newPath = path.slice(0, -10); // Removes 'index.html'
+        window.location.href = newPath || '/'; // Redirect to root if it was the only thing
+      } else if (path.endsWith('.html')) {
+        const newPath = path.slice(0, -5); // Removes '.html'
+        window.location.href = newPath;
+      }
     </script>
 </body>
 </html>
