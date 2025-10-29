@@ -269,10 +269,10 @@
     }
     </script>
     
-    <!-- DNS Prefetch -->
+    <!-- DNS Prefetch and Preconnect -->
     <link rel="dns-prefetch" href="//translate.google.com">
     <link rel="dns-prefetch" href="//maps.google.com">
-    <link rel="dns-prefetch" href="//www.chatbase.co">
+    <link rel="preconnect" href="https://www.chatbase.co" crossorigin>
     
     <!-- AOS - Animate On Scroll -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -1519,7 +1519,7 @@
                     (window.chatbase.q = window.chatbase.q || []).push(arguments)
                 };
                 window.chatbase('open');
-
+            
                 // Poll for the chatbase object to be ready
                 const interval = setInterval(function() {
                     if (window.chatbase && window.chatbase.q) {
