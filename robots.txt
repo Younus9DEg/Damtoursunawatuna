@@ -1,0 +1,38 @@
+# Dam Tours Unawatuna - Robots.txt
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /bike.html
+
+# Disallow unnecessary files
+Disallow: /script.js
+Disallow: /styles.css
+Disallow: /*.gif$
+
+# Sitemap location
+Sitemap: https://damtoursunawatuna.com/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1
+
+# Allow all search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
