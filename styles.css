@@ -1914,7 +1914,7 @@ body {
 /* Mobile Optimizations */
 @media (max-width: 768px) {
     .tour-card {
-        margin: 0 10px 20px;
+        margin: 0 10px;
         border-radius: 12px;
     }
 
