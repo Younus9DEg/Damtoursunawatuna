@@ -75,20 +75,28 @@ function toggleTheme() {
 initTheme();
 
 // Setup theme toggle button
-document.addEventListener('DOMContentLoaded', function() {
+// This needs to be robust enough to work immediately or after DOM load
+function setupThemeToggle() {
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
+        // Prevent adding multiple listeners
+        if (themeToggle.dataset.listenerAttached) return;
+
         themeToggle.addEventListener('click', toggleTheme);
-        
-        // Keyboard accessibility
         themeToggle.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 toggleTheme();
             }
         });
+        themeToggle.dataset.listenerAttached = 'true';
     }
-});
+}
+
+// Attempt to set up the toggle immediately
+setupThemeToggle();
+// Also set it up after the DOM is fully loaded as a fallback
+document.addEventListener('DOMContentLoaded', setupThemeToggle);
 
 // Navigation
 const navbar = document.getElementById('navbar');
