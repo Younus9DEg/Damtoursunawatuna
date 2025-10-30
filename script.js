@@ -41,62 +41,54 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ===== THEME TOGGLE =====
-// Initialize theme - default to light mode, only use saved preference
-function initTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    
-    // Default to light mode unless user has saved a preference
-    if (savedTheme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
+(function() {
+    // Initialize theme immediately to prevent flash of wrong theme
+    function initTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
     }
-}
+    initTheme();
+})();
 
-// Toggle theme function
-function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    
-    // Trigger animation
-    const toggle = document.getElementById('theme-toggle');
-    if (toggle) {
-        toggle.style.transform = 'rotate(360deg)';
-        setTimeout(() => {
-            toggle.style.transform = 'rotate(0deg)';
-        }, 400);
-    }
-}
-
-// Initialize theme immediately (before DOM loads)
-initTheme();
-
-// Setup theme toggle button
-// This needs to be robust enough to work immediately or after DOM load
-function setupThemeToggle() {
+document.addEventListener('DOMContentLoaded', function() {
     const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-        // Prevent adding multiple listeners
-        if (themeToggle.dataset.listenerAttached) return;
+    if (!themeToggle) return;
 
-        themeToggle.addEventListener('click', toggleTheme);
-        themeToggle.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                toggleTheme();
-            }
-        });
-        themeToggle.dataset.listenerAttached = 'true';
+    let isToggling = false;
+
+    function toggleTheme(e) {
+        e.preventDefault();
+        if (isToggling) return;
+        isToggling = true;
+
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+
+        // Simple visual feedback
+        themeToggle.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+            themeToggle.style.transform = 'scale(1)';
+            isToggling = false;
+        }, 300);
     }
-}
 
-// Attempt to set up the toggle immediately
-setupThemeToggle();
-// Also set it up after the DOM is fully loaded as a fallback
-document.addEventListener('DOMContentLoaded', setupThemeToggle);
+    // Add both click and touchstart for better mobile responsiveness
+    themeToggle.addEventListener('click', toggleTheme);
+    themeToggle.addEventListener('touchstart', toggleTheme, { passive: true });
+
+    themeToggle.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            toggleTheme(e);
+        }
+    });
+});
 
 // Navigation
 const navbar = document.getElementById('navbar');
