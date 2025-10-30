@@ -1490,70 +1490,87 @@
     <!-- AI Chatbot Button Click Handler -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Handle navbar AI button
             const aiNavBtn = document.getElementById('ai-chatbot-btn');
-            if (aiNavBtn) {
-                aiNavBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    openChatbot();
-                });
-            }
-            
-            // Handle mobile sticky bar AI button
             const aiMobileBtn = document.getElementById('msa-ai-btn');
-            if (aiMobileBtn) {
-                aiMobileBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    openChatbot();
+            const buttons = [aiNavBtn, aiMobileBtn].filter(btn => btn);
+            let isChatbotLoading = false;
+
+            function setButtonsLoading(isLoading) {
+                isChatbotLoading = isLoading;
+                buttons.forEach(btn => {
+                    const icon = btn.querySelector('i');
+                    if (!icon) return;
+
+                    if (isLoading) {
+                        icon.className = 'fas fa-spinner fa-spin';
+                        btn.disabled = true;
+                    } else {
+                        icon.className = 'fas fa-robot';
+                        btn.disabled = false;
+                    }
                 });
             }
             
             function openChatbot() {
+                if (isChatbotLoading) return;
+
                 // If chatbase is ready, open it.
-                if (window.chatbase && window.chatbase.q) {
+                if (window.chatbase && window.chatbase('getState') === 'initialized') {
                     window.chatbase('open');
                     return;
                 }
-                // Otherwise, queue the open command and start polling.
-                window.chatbase = window.chatbase || function() {
-                    (window.chatbase.q = window.chatbase.q || []).push(arguments)
-                };
+
+                // Show loading state.
+                setButtonsLoading(true);
+
+                // The chatbase init script queues this command if not ready.
                 window.chatbase('open');
             
-                // Poll for the chatbase object to be ready
-                const interval = setInterval(function() {
-                    if (window.chatbase && window.chatbase.q) {
-                        clearInterval(interval);
-                        // The embed script replaces the queue with the actual function.
-                        // We can now safely call the open command.
+                // Poll for the chatbase window to become visible.
+                const pollForChatbot = setInterval(function() {
+                    const chatWindow = document.querySelector('#chatbase-bubble-window');
+                    if (chatWindow) {
+                        const style = window.getComputedStyle(chatWindow);
+                        if (style.opacity === '1' && style.visibility === 'visible') {
+                            clearInterval(pollForChatbot);
+                            setButtonsLoading(false);
+                        }
                     }
-                }, 500);
+                }, 200);
+
+                // Failsafe timeout to prevent infinite loading state
+                setTimeout(() => {
+                    clearInterval(pollForChatbot);
+                    if (isChatbotLoading) {
+                        setButtonsLoading(false);
+                    }
+                }, 8000);
             }
             
+            buttons.forEach(btn => {
+                if (btn) {
+                    btn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        openChatbot();
+                    });
+                }
+            });
+
             // Close chatbot when clicking outside
             document.addEventListener('click', function(e) {
                 const chatbaseWindow = document.querySelector('#chatbase-bubble-window');
-                const aiNavBtn = document.getElementById('ai-chatbot-btn');
-                const aiMobileBtn = document.getElementById('msa-ai-btn');
                 
                 if (chatbaseWindow) {
                     const isClickInsideChatbot = chatbaseWindow.contains(e.target);
-                    const isClickOnAiButton = (aiNavBtn && aiNavBtn.contains(e.target)) || 
-                                             (aiMobileBtn && aiMobileBtn.contains(e.target));
+                    const isClickOnAiButton = buttons.some(btn => btn && btn.contains(e.target));
                     
-                    // If click is outside chatbot and not on AI button, close the chatbot
                     if (!isClickInsideChatbot && !isClickOnAiButton) {
                         const isVisible = window.getComputedStyle(chatbaseWindow).display !== 'none' &&
-                                        window.getComputedStyle(chatbaseWindow).visibility !== 'hidden';
+                                        window.getComputedStyle(chatbaseWindow).visibility !== 'hidden' &&
+                                        window.getComputedStyle(chatbaseWindow).opacity === '1';
                         
-                        if (isVisible) {
-                            if (window.chatbase) {
-                                window.chatbase('close');
-                            } else {
-                                chatbaseWindow.style.display = 'none';
-                                chatbaseWindow.style.visibility = 'hidden';
-                                chatbaseWindow.style.opacity = '0';
-                            }
+                        if (isVisible && window.chatbase && window.chatbase('getState') === 'initialized') {
+                            window.chatbase('close');
                         }
                     }
                 }
